@@ -9,7 +9,6 @@ bot = commands.Bot(command_prefix = '!')
 token = 'your bot token'
 ROLE = "Member"
 UNVERIFIED = "Unverified"
-start_time = datetime.datetime.utcnow()
 
 def is_channel(ctx):
     return ctx.channel.id == 760106239253938196
