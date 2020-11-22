@@ -5,7 +5,10 @@ import time
 import datetime
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix = '!')
+intents = discord.Intents.default()
+intents.members = True
+
+bot = commands.Bot(command_prefix='!', intents=intents)
 token = 'your bot token'
 ROLE = "Member"
 UNVERIFIED = "Unverified"
@@ -24,9 +27,8 @@ async def on_ready():
 bot.event
 async def on_member_join(member):
     role = discord.utils.get(member.guild.roles, name=ROLE)
-    await member.add_roles(role)
     role2 = discord.utils.get(member.guild.roles, name=UNVERIFIED)
-    await member.add_roles(role2)
+    await member.add_roles(role, role2)
 
 @bot.command(name='verify')
 @commands.check(is_channel)
