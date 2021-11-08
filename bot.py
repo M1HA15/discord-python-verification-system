@@ -14,7 +14,7 @@ ROLE = "Member"
 UNVERIFIED = "Unverified"
 
 def is_channel(ctx):
-    return ctx.channel.id == 760106239253938196
+    return ctx.channel.id == channel_id
 
 @bot.event
 async def on_ready():
@@ -24,7 +24,7 @@ async def on_ready():
     print('Servers connected to:')
     await bot.change_presence(status=discord.Status.online, activity=discord.Game('!help'))
 
-bot.event
+@bot.event
 async def on_member_join(member):
     role = discord.utils.get(member.guild.roles, name=ROLE)
     role2 = discord.utils.get(member.guild.roles, name=UNVERIFIED)
